@@ -118,7 +118,6 @@ int main(void)
 				break;
 			default:
 				break;
-
 	  }
 
     /* USER CODE END WHILE */
