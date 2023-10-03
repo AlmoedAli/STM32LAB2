@@ -109,7 +109,7 @@ int main(void)
 		  }
 		  HAL_GPIO_TogglePin(red_GPIO_Port, red_Pin);
 		  update7SEG(index_led++);
-		  setTimer1(50);
+		  setTimer1(25);
 	  }
 	  if (flag2== 1)
 	  {

@@ -424,8 +424,8 @@ int main(void)
  800037e:	607a      	str	r2, [r7, #4]
  8000380:	4618      	mov	r0, r3
  8000382:	f000 f9ed 	bl	8000760 <update7SEG>
-		  setTimer1(50);
- 8000386:	2032      	movs	r0, #50	; 0x32
+		  setTimer1(25);
+ 8000386:	2019      	movs	r0, #25
  8000388:	f000 f934 	bl	80005f4 <setTimer1>
 	  }
 	  if (flag2== 1)
