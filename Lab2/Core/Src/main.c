@@ -102,23 +102,31 @@ int main(void)
   setTimer2(1);
   while (1)
   {
-	  second++;
-	  if (second >= 60)
+	  if (flag1== 1)
 	  {
-		  second= 0;
-		  minute+= 1;
+		  second++;
+		  if (second >= 60)
+		  {
+			  second= 0;
+			  minute+= 1;
+		  }
+		  if (minute >= 60)
+		  {
+			  minute= 0;
+			  hour+=1;
+		  }
+		  if (hour >= 24)
+		  {
+			  hour= 0;
+		  }
+		  updateClockBuffer();
+		  setTimer1(100);
 	  }
-	  if (minute >= 60)
+	  if (flag2== 1)
 	  {
-		  minute= 0;
-		  hour+=1;
+		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		  setTimer2(100);
 	  }
-	  if (hour >= 24)
-	  {
-		  hour= 0;
-	  }
-	  updateClockBuffer();
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
