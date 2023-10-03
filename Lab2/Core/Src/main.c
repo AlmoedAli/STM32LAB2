@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "softwareTimer.h"
 #include "7seg.h"
+#include "update7.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,7 +58,7 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-int status;
+
 /* USER CODE END 0 */
 
 /**
@@ -95,45 +96,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer1(50);
-  setTimer2(100);
-  status= 1;
-  display7Seg(1);
+  int index_led= 0;
+  setTimer1(1);
+  setTimer2(1);
   while (1)
   {
 	  if (flag1== 1)
 	  {
-		  HAL_GPIO_TogglePin(red_GPIO_Port, red_Pin);
-		  switch (status)
+		  if (index_led > 3)
 		  {
-			case 1:
-				HAL_GPIO_TogglePin(en0_GPIO_Port, en0_Pin);
-				display7Seg(2);
-				HAL_GPIO_TogglePin(en1_GPIO_Port, en1_Pin);
-				status= 2;
-				break;
-			case 2:
-				HAL_GPIO_TogglePin(en1_GPIO_Port, en1_Pin);
-				display7Seg(3);
-				HAL_GPIO_TogglePin(en2_GPIO_Port, en2_Pin);
-				status= 3;
-				break;
-			case 3:
-				HAL_GPIO_TogglePin(en2_GPIO_Port, en2_Pin);
-				display7Seg(0);
-				HAL_GPIO_TogglePin(en3_GPIO_Port, en3_Pin);
-				status= 4;
-				break;
-			case 4:
-				HAL_GPIO_TogglePin(en3_GPIO_Port, en3_Pin);
-				display7Seg(1);
-				HAL_GPIO_TogglePin(en0_GPIO_Port, en0_Pin);
-				status= 1;
-				break;
-			default:
-				break;
+			  index_led= 0;
 		  }
-
+		  HAL_GPIO_TogglePin(red_GPIO_Port, red_Pin);
+		  update7SEG(index_led++);
 		  setTimer1(50);
 	  }
 	  if (flag2== 1)
@@ -242,14 +217,14 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, DOT_Pin|red_Pin|en0_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, DOT_Pin|red_Pin|en3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, en1_Pin|en2_Pin|en3_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, en0_Pin|en1_Pin|en2_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, segA_Pin|segB_Pin|segC_Pin|segD_Pin
-                          |segE_Pin|segF_Pin|segG_Pin, GPIO_PIN_RESET);
+                          |segE_Pin|segF_Pin|segG_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : DOT_Pin red_Pin en0_Pin en1_Pin
                            en2_Pin en3_Pin */
@@ -274,7 +249,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-//	HAL_Delay(10);
 	runTimer();
 }
 /* USER CODE END 4 */

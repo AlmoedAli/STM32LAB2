@@ -1,10 +1,9 @@
 /*
  * 7seg.c
  *
- *  Created on: Oct 2, 2023
+ *  Created on: Oct 3, 2023
  *      Author: TVB09
  */
-
 
 #include "7seg.h"
 
