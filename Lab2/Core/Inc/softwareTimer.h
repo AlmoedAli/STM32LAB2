@@ -8,11 +8,13 @@
 #ifndef INC_SOFTWARETIMER_H_
 #define INC_SOFTWARETIMER_H_
 
-extern int counter;
-extern int flag;
+extern int counter1;
+extern int counter2;
 
-void setTimer(int duration);
+extern int flag1;
+extern int flag2;
+
+void setTimer1(int duration);
+void setTimer2(int duration);
 void runTimer();
-
-
 #endif /* INC_SOFTWARETIMER_H_ */

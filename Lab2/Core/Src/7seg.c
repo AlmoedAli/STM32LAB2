@@ -7,7 +7,7 @@
 
 
 #include "7seg.h"
-#include "main.h"
+
 void display(GPIO_PinState A, GPIO_PinState B, GPIO_PinState C, GPIO_PinState D,
 		GPIO_PinState E, GPIO_PinState F, GPIO_PinState G)
 {
@@ -23,39 +23,40 @@ void display(GPIO_PinState A, GPIO_PinState B, GPIO_PinState C, GPIO_PinState D,
 void display7Seg(int num)
 {
 	switch (num)
-		{
-			case 0:
-				display(0, 0, 0, 0, 0, 0, 1);
-				break;
-			case 1:
-				display(1, 0, 0, 1,  1, 1, 1);
-				break;
-			case 2:
-				display(0, 0, 1, 0, 0, 1, 0);
-				break;
+	{
+		case 0:
+			display(0, 0, 0, 0, 0, 0, 1);
+			break;
+		case 1:
+			display(1, 0, 0, 1,  1, 1, 1);
+			break;
+		case 2:
+			display(0, 0, 1, 0, 0, 1, 0);
+			break;
 
-			case 3:
-				display(0, 0, 0, 0, 1, 1, 0);
-				break;
-			case 4:
-				display(1, 0, 0, 1, 1, 0, 0);
-				break;
-			case 5:
-				display(0, 1, 0, 0, 1, 0, 0);
-				break;
-			case 6:
-				display(0, 1, 0, 0, 0, 0, 0);
-				break;
-			case 7:
-				display(0, 0, 0, 1, 1, 1, 1);
-				break;
-			case 8:
-				display(0, 0, 0, 0, 0, 0, 0);
-				break;
-			case 9:
-				display(0, 0, 0, 0, 1, 0, 0);
-				break;
-			default:
-				break;
-		}
+		case 3:
+			display(0, 0, 0, 0, 1, 1, 0);
+			break;
+		case 4:
+			display(1, 0, 0, 1, 1, 0, 0);
+			break;
+		case 5:
+			display(0, 1, 0, 0, 1, 0, 0);
+			break;
+		case 6:
+			display(0, 1, 0, 0, 0, 0, 0);
+			break;
+		case 7:
+			display(0, 0, 0, 1, 1, 1, 1);
+			break;
+		case 8:
+			display(0, 0, 0, 0, 0, 0, 0);
+			break;
+		case 9:
+			display(0, 0, 0, 0, 1, 0, 0);
+			break;
+		default:
+			display(0, 0, 0, 0, 1, 0, 0);
+			break;
+	}
 }

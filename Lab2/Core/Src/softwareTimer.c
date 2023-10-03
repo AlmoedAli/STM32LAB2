@@ -8,23 +8,40 @@
 
 #include "softwareTimer.h"
 
-int counter;
-int flag;
-
+int counter1;
+int counter2;
+int flag2;
+int flag1;
 void runTimer()
 {
-	if (counter > 0)
+	if (counter1 > 0)
 	{
-		counter--;
-		if (counter <= 0)
+		counter1--;
+		if (counter1 <= 0)
 		{
-			flag= 1;
+			flag1= 1;
+		}
+	}
+
+	if (counter2 > 0)
+	{
+		counter2--;
+		if (counter2 <= 0)
+		{
+			flag2= 1;
 		}
 	}
 }
 
-void setTimer(int duration)
+void setTimer1(int duration)
 {
-	counter= duration;
-	flag= 0;
+	counter1= duration;
+	flag1= 0;
 }
+
+void setTimer2(int duration)
+{
+	counter2= duration;
+	flag2= 0;
+}
+
