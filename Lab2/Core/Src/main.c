@@ -25,6 +25,7 @@
 #include "softwareTimer.h"
 #include "7seg.h"
 #include "update7.h"
+#include "buffer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,26 +97,28 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int index_led= 0;
+//  int index_led= 0;
   setTimer1(1);
   setTimer2(1);
   while (1)
   {
-	  if (flag1== 1)
+	  second++;
+	  if (second >= 60)
 	  {
-		  if (index_led > 3)
-		  {
-			  index_led= 0;
-		  }
-		  HAL_GPIO_TogglePin(red_GPIO_Port, red_Pin);
-		  update7SEG(index_led++);
-		  setTimer1(25);
+		  second= 0;
+		  minute+= 1;
 	  }
-	  if (flag2== 1)
+	  if (minute >= 60)
 	  {
-		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		  setTimer2(100);
+		  minute= 0;
+		  hour+=1;
 	  }
+	  if (hour >= 24)
+	  {
+		  hour= 0;
+	  }
+	  updateClockBuffer();
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -24,7 +24,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Core/Inc/softwareTimer.h ../Core/Inc/7seg.h ../Core/Inc/main.h \
- ../Core/Inc/update7.h
+ ../Core/Inc/update7.h ../Core/Inc/buffer.h
 
 ../Core/Inc/main.h:
 
@@ -83,3 +83,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/main.h:
 
 ../Core/Inc/update7.h:
+
+../Core/Inc/buffer.h:

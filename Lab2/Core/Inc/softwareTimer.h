@@ -12,8 +12,8 @@ extern int counter2;
 extern int flag1;
 extern int flag2;
 
-void runTimer1();
-void runTimer2();
-void setTimer(int duration);
+void runTimer();
+void setTimer1(int duration);
+void setTimer2(int duration);
 
 #endif /* INC_SOFTWARETIMER_H_ */
