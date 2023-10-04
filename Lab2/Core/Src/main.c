@@ -97,9 +97,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//  int index_led= 0;
+  int index_led= 0;
   setTimer1(1);
   setTimer2(1);
+  setTimer3(1);
   while (1)
   {
 	  if (flag1== 1)
@@ -126,6 +127,16 @@ int main(void)
 	  {
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		  setTimer2(100);
+	  }
+	  if (flag3== 1)
+	  {
+		  if (index_led > 3)
+		  {
+			  index_led= 0;
+		  }
+		  update7SEG(index_led++);
+		  HAL_GPIO_TogglePin(red_GPIO_Port, red_Pin);
+		  setTimer3(25);
 	  }
     /* USER CODE END WHILE */
 

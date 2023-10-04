@@ -23,7 +23,7 @@ Core/Src/update7.o: ../Core/Src/update7.c ../Core/Inc/update7.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/7seg.h ../Core/Inc/main.h
+ ../Core/Inc/7seg.h ../Core/Inc/main.h ../Core/Inc/buffer.h
 
 ../Core/Inc/update7.h:
 
@@ -80,3 +80,5 @@ Core/Src/update7.o: ../Core/Src/update7.c ../Core/Inc/update7.h \
 ../Core/Inc/7seg.h:
 
 ../Core/Inc/main.h:
+
+../Core/Inc/buffer.h:

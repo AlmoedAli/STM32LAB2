@@ -9,8 +9,8 @@
 
 int second= 50;
 int hour= 15;
-int minute= 8;
-int Led_buffer[4]= {0, 0, 0, 0};
+int minute= 12;
+int Led_buffer[4]= {1, 5, 3, 8};
 
 void updateClockBuffer()
 {

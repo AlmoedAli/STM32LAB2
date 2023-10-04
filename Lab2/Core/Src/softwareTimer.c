@@ -9,8 +9,10 @@
 
 int counter1;
 int counter2;
+int counter3;
 int flag1;
 int flag2;
+int flag3;
 
 void runTimer()
 {
@@ -30,6 +32,20 @@ void runTimer()
 			flag2= 1;
 		}
 	}
+	if (counter3 > 0)
+	{
+		counter3--;
+		if (counter3 <= 0)
+		{
+			flag3= 1;
+		}
+	}
+}
+
+void setTimer3(int duration)
+{
+	counter3= duration;
+	flag3= 0;
 }
 
 void setTimer1(int duration)

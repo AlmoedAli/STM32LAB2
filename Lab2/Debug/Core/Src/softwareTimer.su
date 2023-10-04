@@ -1,3 +1,4 @@
-softwareTimer.c:15:6:runTimer	4	static
-softwareTimer.c:35:6:setTimer1	16	static
-softwareTimer.c:41:6:setTimer2	16	static
+softwareTimer.c:17:6:runTimer	4	static
+softwareTimer.c:45:6:setTimer3	16	static
+softwareTimer.c:51:6:setTimer1	16	static
+softwareTimer.c:57:6:setTimer2	16	static
