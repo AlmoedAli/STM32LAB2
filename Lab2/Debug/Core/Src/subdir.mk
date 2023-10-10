@@ -7,6 +7,7 @@
 C_SRCS += \
 ../Core/Src/7seg.c \
 ../Core/Src/buffer.c \
+../Core/Src/button.c \
 ../Core/Src/main.c \
 ../Core/Src/softwareTimer.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
@@ -14,11 +15,13 @@ C_SRCS += \
 ../Core/Src/syscalls.c \
 ../Core/Src/sysmem.c \
 ../Core/Src/system_stm32f1xx.c \
-../Core/Src/update7.c 
+../Core/Src/update7.c \
+../Core/Src/updateMatrix.c 
 
 OBJS += \
 ./Core/Src/7seg.o \
 ./Core/Src/buffer.o \
+./Core/Src/button.o \
 ./Core/Src/main.o \
 ./Core/Src/softwareTimer.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
@@ -26,11 +29,13 @@ OBJS += \
 ./Core/Src/syscalls.o \
 ./Core/Src/sysmem.o \
 ./Core/Src/system_stm32f1xx.o \
-./Core/Src/update7.o 
+./Core/Src/update7.o \
+./Core/Src/updateMatrix.o 
 
 C_DEPS += \
 ./Core/Src/7seg.d \
 ./Core/Src/buffer.d \
+./Core/Src/button.d \
 ./Core/Src/main.d \
 ./Core/Src/softwareTimer.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
@@ -38,7 +43,8 @@ C_DEPS += \
 ./Core/Src/syscalls.d \
 ./Core/Src/sysmem.d \
 ./Core/Src/system_stm32f1xx.d \
-./Core/Src/update7.d 
+./Core/Src/update7.d \
+./Core/Src/updateMatrix.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

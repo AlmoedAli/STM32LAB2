@@ -26,6 +26,8 @@
 #include "7seg.h"
 #include "update7.h"
 #include "buffer.h"
+#include "updateMatrix.h"
+#include "button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,51 +95,26 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+//  HAL_TIM_Base_Stop_IT(&htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int index_led= 0;
+//  int index= 0;
   setTimer1(1);
-  setTimer2(1);
-  setTimer3(1);
   while (1)
   {
-	  if (flag1== 1)
-	  {
-		  second++;
-		  if (second >= 60)
-		  {
-			  second= 0;
-			  minute+= 1;
-		  }
-		  if (minute >= 60)
-		  {
-			  minute= 0;
-			  hour+=1;
-		  }
-		  if (hour >= 24)
-		  {
-			  hour= 0;
-		  }
-		  updateClockBuffer();
-		  setTimer1(100);
-	  }
-	  if (flag2== 1)
-	  {
-		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		  setTimer2(100);
-	  }
-	  if (flag3== 1)
-	  {
-		  if (index_led > 3)
-		  {
-			  index_led= 0;
-		  }
-		  update7SEG(index_led++);
-		  HAL_GPIO_TogglePin(red_GPIO_Port, red_Pin);
-		  setTimer3(25);
-	  }
+	  /* CODE DISPLAY NUMBER */
+//	 if (index > 8)
+//	 {
+//		 index= 0;
+//	 }
+//	 updateLEDMatrix(index++);
+	  /* END CODE DISPLAY NUMBER */
+
+	  /* START CODE DISPLAY "A */
+	  displayLed8x8(matrix_buffer);
+	  /* END CODE DISPLAY "A*/
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -199,7 +176,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 7999;
+  htim2.Init.Prescaler = 1599;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -239,14 +216,30 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, DOT_Pin|red_Pin|en3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LED_1_Pin|LED_2_Pin|DOT_Pin|red_Pin
+                          |en3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, en0_Pin|en1_Pin|en2_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, ENM0_Pin|ENM1_Pin|en0_Pin|en1_Pin
+                          |en2_Pin|ENM2_Pin|ENM3_Pin|ENM4_Pin
+                          |ENM5_Pin|ROW6_Pin|ROW7_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, segA_Pin|segB_Pin|segC_Pin|segD_Pin
-                          |segE_Pin|segF_Pin|segG_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, segA_Pin|segB_Pin|segC_Pin|ROW2_Pin
+                          |ROW3_Pin|ROW4_Pin|ROW5_Pin|ENM6_Pin
+                          |ENM7_Pin|segD_Pin|segE_Pin|segF_Pin
+                          |segG_Pin|ROW0_Pin|ROW1_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pins : LED_1_Pin LED_2_Pin ENM0_Pin ENM1_Pin
+                           ENM2_Pin ENM3_Pin ENM4_Pin ENM5_Pin
+                           ROW6_Pin ROW7_Pin */
+  GPIO_InitStruct.Pin = LED_1_Pin|LED_2_Pin|ENM0_Pin|ENM1_Pin
+                          |ENM2_Pin|ENM3_Pin|ENM4_Pin|ENM5_Pin
+                          |ROW6_Pin|ROW7_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : DOT_Pin red_Pin en0_Pin en1_Pin
                            en2_Pin en3_Pin */
@@ -265,6 +258,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : ROW2_Pin ROW3_Pin ROW4_Pin ROW5_Pin
+                           ENM6_Pin ENM7_Pin ROW0_Pin ROW1_Pin */
+  GPIO_InitStruct.Pin = ROW2_Pin|ROW3_Pin|ROW4_Pin|ROW5_Pin
+                          |ENM6_Pin|ENM7_Pin|ROW0_Pin|ROW1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : BUTTON_Pin */
+  GPIO_InitStruct.Pin = BUTTON_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(BUTTON_GPIO_Port, &GPIO_InitStruct);
 
 }
 
