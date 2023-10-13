@@ -18,5 +18,6 @@ extern uint16_t ENM[8];
 
 void updateLEDMatrix(int index);
 void displayLed8x8();
+void topBottom(uint8_t* hex);
 
 #endif /* INC_UPDATEMATRIX_H_ */

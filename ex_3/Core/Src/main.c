@@ -100,20 +100,19 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//  int index= 0;
-  setTimer1(1);
+  int index= 0;
+//  setTimer1(1);
   while (1)
   {
 	  /* CODE DISPLAY NUMBER */
-//	 if (index > 8)
-//	 {
-//		 index= 0;
-//	 }
-//	 updateLEDMatrix(index++);
+	 if (index > 8)
+	 {
+		 index= 0;
+	 }
+	 updateLEDMatrix(index++);
 	  /* END CODE DISPLAY NUMBER */
 
 	  /* START CODE DISPLAY "A */
-	  displayLed8x8(matrix_buffer);
 	  /* END CODE DISPLAY "A*/
     /* USER CODE END WHILE */
 
