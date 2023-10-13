@@ -105,11 +105,7 @@ int main(void)
   while (1)
   {
 	  /* CODE DISPLAY NUMBER */
-	 if (index > 8)
-	 {
-		 index= 0;
-	 }
-	 updateLEDMatrix(index++);
+	 displayLed8x8(matrix_buffer);
 	  /* END CODE DISPLAY NUMBER */
 
 	  /* START CODE DISPLAY "A */

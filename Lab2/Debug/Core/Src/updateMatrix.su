@@ -1,3 +1,2 @@
-updateMatrix.c:58:6:updateLEDMatrix	16	static
-updateMatrix.c:92:6:topBottom	32	static
-updateMatrix.c:110:6:displayLed8x8	24	static
+updateMatrix.c:33:6:updateLEDMatrix	16	static
+updateMatrix.c:85:6:displayLed8x8	32	static
