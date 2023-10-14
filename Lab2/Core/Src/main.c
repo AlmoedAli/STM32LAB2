@@ -1,6 +1,5 @@
 /* USER CODE BEGIN Header */
 /**
- * Binh
   ******************************************************************************
   * @file           : main.c
   * @brief          : Main program body
@@ -102,7 +101,7 @@ int main(void)
   display7Seg(1);
   while (1)
   {
-	  if (flag1== 0)
+	  if (flag1== 1)
 	  {
 		  HAL_GPIO_TogglePin(red_GPIO_Port, red_Pin);
 		  switch (status)
