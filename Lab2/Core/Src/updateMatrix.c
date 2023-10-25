@@ -98,18 +98,17 @@ void topBottom(uint8_t* hex)
 			led_buffer[index]= led_buffer[index-1];
 		}
 		led_buffer[0]= hex[chara];
-		displayLed8x8();
+		displayLed8x8(led_buffer);
 	}
 	for (int index= 7; index >= 1; index--)
 	{
 		led_buffer[index]= led_buffer[index- 1];
 	}
 	led_buffer[0]= 0x00;
-	displayLed8x8();
+	displayLed8x8(led_buffer);
 }
-void displayLed8x8()
+void displayLed8x8(uint8_t* ALPHA)
 {
-	uint8_t* ALPHA= led_buffer;
 	for (int time= 0; time < 10; time++)
 	{
 		for (int row= 0; row < 8; row++)
